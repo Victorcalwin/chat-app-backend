@@ -5,12 +5,18 @@ const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const cors = require('cors');
+
+const corsOptions = {
+    origin: ["http://localhost:3000"],
+    credentials: true,
+};
 
 
 dotenv.config();
 connectDB();
 const app = express();
-
+app.use(cors(corsOptions));
 app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
